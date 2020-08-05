@@ -1,0 +1,76 @@
+.btn {
+    background-color: DodgerBlue; /* Blue background */
+  border: none; /* Remove borders */
+  cursor: pointer; /* Mouse pointer on hover */
+}
+
+img {
+    padding: 2px;
+    width: 96%;
+  }
+
+video {
+    padding: 2px;
+    width: 96%;
+}
+
+embed {
+  padding: 2px;
+  width: 800px;
+  height: 800px;
+}
+
+mat-grid-tile {
+    background: white;
+}
+
+.ForAlert {
+    width: 250px;
+    height: 60px;
+    position: absolute;
+    left:50%; 
+    top:60%; 
+    transform:translate(-50%,-50%);
+}
+
+.title{
+  text-align: center;
+  top: 10%;
+  bottom: 0;
+  margin-top:20px ;
+  font-size: 50px; 
+}
+
+.Subtitle{
+  text-align: center;
+  font-size: 35px;
+}
+
+.SmallTitle{
+  text-align: center;
+  font-size: 25px;
+}
+
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.example-radio-button {
+  margin: 5px;
+}
+
+.example-form-field {
+  width: 200px;
+}
+
+.intro{
+  text-align: center;
+  font-size: 25px;
+}
+
+.intro2{
+  text-align: center;
+  font-size: 20px;
+}
