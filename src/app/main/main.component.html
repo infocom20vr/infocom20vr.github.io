@@ -1,5 +1,5 @@
 <div class="form-group">
-    <h1 class="title">Subjective Experiment for Point Cloud Quality</h1>
+    <h1 class="title">Subjective Experiment for 360 video streaming</h1>
     <br>
     <div [hidden]="hide_personal_info">
         <h2 class="Subtitle">Personal Information:</h2>
@@ -39,316 +39,113 @@
         <div class="intro2" style="width: 50%;border: 1px solid black;margin:0 auto;">This experiment is to compare visual quality of shown video pairs or image pairs. You will be shown video pairs and image pairs in random order. Below lists a few example of video and image pairs as guidence for standard you need to stick to during the experiment. </div>  
         <br>
 
-    <h2 class="Subtitle">Training Session</h2>
+    <h2 class="Subtitle">Internal Viewing Session</h2>
     <br>
     <br>
     <h3 class="intro">Video Examples:</h3>
     <br>
-    <mat-grid-list cols="2" rowHeight="2:2">
+
+        <!-- Aug 30. Internal test: show some sample videos -->   
+        <mat-grid-list cols="1" rowHeight="2:1">
 
         <mat-grid-tile [colspan]="1" [rowspan]="1">
             <div>
-                <div class="SmallTitle">Left:</div>
-                <video #vid1 src="../assets/videos/redandblack_40_after.mp4" preload controls muted autoPlay loop playsinline></video>
-                <!--<embed src="../assets/videos/redandblack_40_after.mp4" autostart="false"/>-->
-                <!--<img src="../assets/videos/redandblack_40_after.mp4">-->
+                <div class="SmallTitle">Video 3 (Broadway), trace 1, 1Mbps :</div>
+                <video #vid1 src="../assets/videos/vid3_1_1M_stacked_TSP_Tiling.mp4" preload controls muted autoPlay loop playsinline></video>
             </div>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-            <div>
-                <div class="SmallTitle">Right:</div>
-                <video  #vid2 src="../assets/videos/redandblack_40.mp4" preload controls muted autoPlay loop playsinline></video>
-            <!--<img src="../assets/videos/redandblack_40.mp4">-->
-            </div>
-        </mat-grid-tile>
-
-        
     </mat-grid-list>
-    <h2 class="Subtitle">
-        Left has much better quality than Right.
-    </h2>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <mat-grid-list cols="2" rowHeight="2:2">
+        <mat-grid-list cols="1" rowHeight="2:1">
 
         <mat-grid-tile [colspan]="1" [rowspan]="1">
             <div>
-                <div class="SmallTitle">Left:</div>
-                <video  #vid3 src="../assets/videos/redandblack_30_after.mp4" controls muted autoplay loop playsinline></video>
-                <!--<img src="../assets/videos/redandblack_30_after.mp4">-->
+                <div class="SmallTitle">Video 3 (Broadway), trace 1, 5Mbps :</div>
+                <video #vid1 src="../assets/videos/vid3_1_5M_stacked_TSP_Tiling.mp4" preload controls muted autoPlay loop playsinline></video>
             </div>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-            <div>
-                <div class="SmallTitle">Right:</div>
-                <video  #vid4 src="../assets/videos/redandblack_30.mp4" controls muted autoplay loop playsinline></video>
-            <!--<img src="../assets/videos/redandblack_30.mp4">-->
-            </div>
-        </mat-grid-tile>
-
-        
     </mat-grid-list>
-    <h2 class="Subtitle">
-        Left has a little better quality than Right.
-    </h2>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <mat-grid-list cols="2" rowHeight="2:2">
+    <!--<h2 class="Subtitle">
+        Later: Add description on which one is better
+    </h2>-->
+
+        <mat-grid-list cols="1" rowHeight="2:1">
 
         <mat-grid-tile [colspan]="1" [rowspan]="1">
             <div>
-                <div class="SmallTitle">Left:</div>
-                <video  #vid5 src="../assets/videos/redandblack_20_after.mp4" controls muted autoplay loop playsinline></video>
-                <!--<img src="../assets/videos/redandblack_20_after.mp4">-->
+                <div class="SmallTitle">Video 3 (Broadway), trace 1, 10Mbps :</div>
+                <video #vid1 src="../assets/videos/vid3_1_10M_stacked_TSP_Tiling.mp4" preload controls muted autoPlay loop playsinline></video>
             </div>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-            <div>
-                <div class="SmallTitle">Right:</div>
-                <video  #vid6 src="../assets/videos/redandblack_20.mp4" controls muted autoplay loop playsinline></video>
-            <!--<img src="../assets/videos/redandblack_20.mp4">-->
-            </div>
-        </mat-grid-tile>
-
-        
     </mat-grid-list>
+
     <h2 class="Subtitle">
-        Left and Right have similar quality.
+        Use this template to add description
     </h2>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <mat-grid-list cols="2" rowHeight="2:2">
+        <mat-grid-list cols="1" rowHeight="2:1">
 
         <mat-grid-tile [colspan]="1" [rowspan]="1">
             <div>
-                <div class="SmallTitle">Left:</div>
-                <video  #vid7 src="../assets/videos/redandblack_30.mp4" controls muted autoplay loop playsinline></video>
-                <!--<img src="../assets/videos/redandblack_30.mp4">-->
+                <div class="SmallTitle">Video 3 (Broadway), trace 2, 1Mbps :</div>
+                <video #vid1 src="../assets/videos/vid3_2_1M_stacked_TSP_Tiling.mp4" preload controls muted autoPlay loop playsinline></video>
             </div>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-            <div>
-                <div class="SmallTitle">Right:</div>
-                <video  #vid8 src="../assets/videos/redandblack_30_after.mp4" controls muted autoplay loop playsinline></video>
-            <!--<img src="../assets/videos/redandblack_30_after.mp4">-->
-            </div>
-        </mat-grid-tile>
-
-        
     </mat-grid-list>
-    <h2 class="Subtitle">
-        Left has a little worse quality than Right.
-    </h2>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <mat-grid-list cols="2" rowHeight="2:2">
+        <mat-grid-list cols="1" rowHeight="2:1">
 
         <mat-grid-tile [colspan]="1" [rowspan]="1">
             <div>
-                <div class="SmallTitle">Left:</div>
-                <video  #vid9 src="../assets/videos/redandblack_40.mp4" controls muted autoplay loop playsinline></video>
-                <!--<img src="../assets/videos/redandblack_40.mp4">-->
+                <div class="SmallTitle">Video 3 (Broadway), trace 2, 5Mbps :</div>
+                <video #vid1 src="../assets/videos/vid3_2_5M_stacked_TSP_Tiling.mp4" preload controls muted autoPlay loop playsinline></video>
             </div>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-            <div>
-                <div class="SmallTitle">Right:</div>
-                <video  #vid10 src="../assets/videos/redandblack_40_after.mp4" controls muted autoplay loop playsinline></video>
-            <!--<img src="../assets/videos/redandblack_40_after.mp4">-->
-            </div>
-        </mat-grid-tile>
-
-        
     </mat-grid-list>
-    <h2 class="Subtitle">
-        Left has much worse quality than Right.
-    </h2>
+    <!--<h2 class="Subtitle">
+        Later: Add description on which one is better
+    </h2>-->
 
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
-    <h3 class="intro">Image Examples:</h3>
-    <br>
-    <mat-grid-list cols="2" rowHeight="2:2">
+        <mat-grid-list cols="1" rowHeight="2:1">
 
         <mat-grid-tile [colspan]="1" [rowspan]="1">
             <div>
-                <div class="SmallTitle">Left:</div>
-                <img src="../assets/images/showcase1_after.png">
+                <div class="SmallTitle">Video 3 (Broadway), trace 2, 10Mbps :</div>
+                <video #vid1 src="../assets/videos/vid3_2_10M_stacked_TSP_Tiling.mp4" preload controls muted autoPlay loop playsinline></video>
             </div>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-            <div>
-                <div class="SmallTitle">Right:</div>
-                <img src="../assets/images/showcase1.png">
-            </div>
-        </mat-grid-tile>
-
-        
     </mat-grid-list>
-    <h2 class="Subtitle">
-        Left has much better quality than Right.
-    </h2>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
-    <mat-grid-list cols="2" rowHeight="2:2">
+        <mat-grid-list cols="1" rowHeight="2:1">
 
         <mat-grid-tile [colspan]="1" [rowspan]="1">
             <div>
-                <div class="SmallTitle">Left:</div>
-                <img src="../assets/images/showcase3_after.png">
+                <div class="SmallTitle">Video 3 (Broadway), trace 3, 1Mbps :</div>
+                <video #vid1 src="../assets/videos/vid3_3_1M_stacked_TSP_Tiling.mp4" preload controls muted autoPlay loop playsinline></video>
             </div>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-            <div>
-                <div class="SmallTitle">Right:</div>
-                <img src="../assets/images/showcase3.png">
-            </div>
-        </mat-grid-tile>
-
-        
     </mat-grid-list>
-    <h2 class="Subtitle">
-        Left has a little better quality than Right.
-    </h2>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
-    <mat-grid-list cols="2" rowHeight="2:2">
+        <mat-grid-list cols="1" rowHeight="2:1">
 
         <mat-grid-tile [colspan]="1" [rowspan]="1">
             <div>
-                <div class="SmallTitle">Left:</div>
-                <img src="../assets/images/showcase2_after.png">
+                <div class="SmallTitle">Video 3 (Broadway), trace 3, 5Mbps :</div>
+                <video #vid1 src="../assets/videos/vid3_3_5M_stacked_TSP_Tiling.mp4" preload controls muted autoPlay loop playsinline></video>
             </div>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-            <div>
-                <div class="SmallTitle">Right:</div>
-                <img src="../assets/images/showcase2.png">
-            </div>
-        </mat-grid-tile>
-
-        
     </mat-grid-list>
-    <h2 class="Subtitle">
-        Left and Right have similar quality.
-    </h2>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <!--<h2 class="Subtitle">
+        Later: Add description on which one is better
+    </h2>-->
 
-    <mat-grid-list cols="2" rowHeight="2:2">
+        <mat-grid-list cols="1" rowHeight="2:1">
 
         <mat-grid-tile [colspan]="1" [rowspan]="1">
             <div>
-                <div class="SmallTitle">Left:</div>
-                <img src="../assets/images/showcase3.png">
+                <div class="SmallTitle">Video 3 (Broadway), trace 3, 10Mbps :</div>
+                <video #vid1 src="../assets/videos/vid3_3_10M_stacked_TSP_Tiling.mp4" preload controls muted autoPlay loop playsinline></video>
             </div>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-            <div>
-                <div class="SmallTitle">Right:</div>
-                <img src="../assets/images/showcase3_after.png">
-            </div>
-        </mat-grid-tile>
-
-        
     </mat-grid-list>
-    <h2 class="Subtitle">
-        Left has a little worse quality than Right.
-    </h2>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
 
-    <mat-grid-list cols="2" rowHeight="2:2">
 
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-            <div>
-                <div class="SmallTitle">Left:</div>
-                <img src="../assets/images/showcase1.png">
-            </div>
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-            <div>
-                <div class="SmallTitle">Right:</div>
-                <img src="../assets/images/showcase1_after.png">
-            </div>
-        </mat-grid-tile>
 
-        
-    </mat-grid-list>
-    <h2 class="Subtitle">
-        Left has much worse quality than Right.
-    </h2>
     <br>
     <br>
     <br>
