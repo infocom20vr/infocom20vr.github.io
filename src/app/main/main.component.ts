@@ -35,6 +35,7 @@ export class MainComponent implements OnInit {
   hide_testing_session: boolean = true;
   hide_save_session: boolean = true;
   hide_personal_info: boolean = false;
+  hide_choosing_session: boolean  = true;
   show_images: boolean = false;
   src_video_path1: string="";
   src_video_path2: string="";
@@ -45,6 +46,7 @@ export class MainComponent implements OnInit {
   file_index: number=0;
   save_result: result_all=new result_all();
   GenderControl = new FormControl('', Validators.required);
+  ChooseTestControl = new FormControl('', Validators.required);
   choices: string[] = ['Left is much better than Right', 'Left is a little better than Right', 'Left and Right are similar', 'Left is a little worse than Right', 'Left is much worse than Right'];
 
   
@@ -54,6 +56,7 @@ export class MainComponent implements OnInit {
     this.save_result.age = 0;
     this.save_result.gender = "";
     this.save_result.chosen_file = "";
+    this.save_result.chosen_test= "";
     this.save_result.recorded_result = [];
 
     //(async () => { 
@@ -110,14 +113,21 @@ export class MainComponent implements OnInit {
   }
 
   FinishTraining() {
-    this.hide_testing_session = false;
+    //this.hide_testing_session = false;
+    this.hide_choosing_session = false;
     this.hide_training_session = true;
+  }
+
+  FinishChoosing(){
+    this.hide_testing_session = false;
+    this.hide_choosing_session = true;
   }
 
   StartTraining() {
     this.hide_personal_info = true;
     this.hide_testing_session = true;
     this.hide_training_session = false;
+
 
     (async () => { 
       // Do something before delay
@@ -156,7 +166,7 @@ export class MainComponent implements OnInit {
 
       this.file_index = this.file_index + 1;
 
-      if (this.file_index === 116){
+      if (this.file_index === 10){
         console.log(this.save_result);
         this.hide_testing_session = true;
         this.hide_save_session = false;

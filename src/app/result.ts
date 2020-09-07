@@ -8,5 +8,6 @@ export class result_all {
     age: number;
     gender: string;
     chosen_file: string;
+    chosen_test: string;
     recorded_result: result[];
 }
