@@ -39,8 +39,10 @@ export class MainComponent implements OnInit {
   show_images: boolean = false;
   src_video_path1: string="";
   src_video_path2: string="";
+  test_length: number;
   user_file_index: number;
   user_file_path: string;
+  video_specs_path: string;
   start_button_disable: boolean = false;
   orders: any;
   file_index: number=0;
@@ -77,20 +79,41 @@ export class MainComponent implements OnInit {
 
   async StartTest() {
     this.start_button_disable = true;
-    this.user_file_index = Math.floor(Math.random() * 40)+1;
-    //this.user_file_index = 1;
-    this.user_file_path = "../assets/json/file"+this.user_file_index+".json";
-    this.save_result.chosen_file = "file"+this.user_file_index+".json";
+    if (this.save_result.chosen_test =='A'){
+    this.test_length=49;
+    this.video_specs_path="../assets/json/specs_A.json";
+}
+    else if (this.save_result.chosen_test =='B'){
+    this.test_length=48;
+    this.video_specs_path="../assets/json/specs_B.json";
+}
+  
+
+    //this.user_file_index = Math.floor(Math.random() * 40)+1;
+    //this.user_file_path = "../assets/json/file"+this.user_file_index+".json";
+    this.save_result.chosen_file = this.video_specs_path;
+    console.log(this.video_specs_path);
     console.log(this.user_file_path);
     console.log("1");
-    this.httpClient.get(this.user_file_path).subscribe(data =>{
+    this.httpClient.get(this.video_specs_path).subscribe(data =>{
       this.orders = data;
-      console.log(this.orders);
-      this.src_video_path1="../assets/videos/"+this.orders[this.file_index].first_A;
-      this.src_video_path2="../assets/videos/"+this.orders[this.file_index].second_B;
+      console.log(this.orders);// This array contains info on which videos to display
+      console.log(this.test_length);
+      //console.log(this.orders[0][3])
+      if (this.orders[this.file_index][3]==0){// 0 means TSP is on left. 1 means Tiling is on left
+      this.src_video_path1="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+'_'+this.orders[this.file_index][2]+"M_TSP.mkv";
+      this.src_video_path2="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+'_'+this.orders[this.file_index][2]+"M_Tiling.mkv";
+      }
+      else{
+      this.src_video_path1="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+'_'+this.orders[this.file_index][2]+"M_Tiling.mkv";
+      this.src_video_path2="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+'_'+this.orders[this.file_index][2]+"M_TSP.mkv";
+      }
+      //this.src_video_path1="../assets/videos/"+this.orders[this.file_index].first_A;
+      //this.src_video_path2="../assets/videos/"+this.orders[this.file_index].second_B;
       //this.show_images=this.orders[this.file_index].IfImage;
-      this.show_images=(this.orders[this.file_index].IfImage =="true");
-
+      console.log(this.src_video_path1)
+      //this.show_images=(this.orders[this.file_index].IfImage =="true");
+      this.show_images=false;
       if (this.show_images == false){
 
       (async () => { 
@@ -120,7 +143,7 @@ export class MainComponent implements OnInit {
 
   FinishChoosing(){
     this.hide_testing_session = false;
-    this.hide_choosing_session = true;
+    this.hide_choosing_session = true;  
   }
 
   StartTraining() {
@@ -166,17 +189,27 @@ export class MainComponent implements OnInit {
 
       this.file_index = this.file_index + 1;
 
-      if (this.file_index === 10){
+      if (this.file_index === this.test_length){
         console.log(this.save_result);
         this.hide_testing_session = true;
         this.hide_save_session = false;
 
       }else{
         this.userchoice = null;
-        this.src_video_path1="../assets/videos/"+this.orders[this.file_index].first_A;
-        this.src_video_path2="../assets/videos/"+this.orders[this.file_index].second_B;
-        this.show_images=(this.orders[this.file_index].IfImage =="true");
+        if (this.orders[this.file_index][3]==0){// 0 means TSP is on left. 1 means Tiling is on left
+          this.src_video_path1="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+'_'+this.orders[this.file_index][2]+"M_TSP.mkv";
+          this.src_video_path2="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+'_'+this.orders[this.file_index][2]+"M_Tiling.mkv";
+        }
+        else{
+          this.src_video_path1="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+'_'+this.orders[this.file_index][2]+"M_Tiling.mkv";
+          this.src_video_path2="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+'_'+this.orders[this.file_index][2]+"M_TSP.mkv";
+        }
+        //this.src_video_path1="../assets/videos/"+this.orders[this.file_index].first_A;
+        //this.src_video_path2="../assets/videos/"+this.orders[this.file_index].second_B;
+        //this.show_images=(this.orders[this.file_index].IfImage =="true");
         //this.show_images=this.orders[this.file_index].IfImage;
+        console.log(this.src_video_path1);
+        console.log(this.src_video_path2);
         if (this.show_images == false){
 
           (async () => { 
