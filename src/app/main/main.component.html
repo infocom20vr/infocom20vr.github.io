@@ -17,36 +17,46 @@
             </mat-form-field>
             
             
-                <mat-form-field>
-                    <mat-label>Your Gender:</mat-label>
-                    <mat-select [formControl]="GenderControl" required [(value)]="save_result.gender">
-                      <mat-option>--</mat-option>
-                      <mat-option value="option1">Male</mat-option>
-                      <mat-option value="option2">Female</mat-option>
-                      <mat-option value="option3">Decline to answer</mat-option>
-                    </mat-select>
-                    <mat-error *ngIf="GenderControl.hasError('required')">Please make a choice</mat-error>
-                </mat-form-field>
-                <!--<p>You selected: {{save_result.gender}}</p>-->
-            
+            <mat-form-field>
+                <mat-label>Your Gender:</mat-label>
+                <mat-select [formControl]="GenderControl" required [(value)]="save_result.gender">
+                  <mat-option>--</mat-option>
+                  <mat-option value="option1">Male</mat-option>
+                  <mat-option value="option2">Female</mat-option>
+                  <mat-option value="option3">Decline to answer</mat-option>
+                </mat-select>
+                <mat-error *ngIf="GenderControl.hasError('required')">Please make a choice</mat-error>
+            </mat-form-field>
+            <!--<p>You selected: {{save_result.gender}}</p>-->
+
+            <mat-form-field>
+            <mat-label>Choose test A or B:</mat-label>
+            <mat-select [formControl]="ChooseTestControl" required [(value)]="save_result.chosen_test">
+              <mat-option>--</mat-option>
+              <mat-option value="A">A</mat-option>
+              <mat-option value="B">B</mat-option>
+            </mat-select>
+            <mat-error *ngIf="ChooseTestControl.hasError('required')">Please choose a test</mat-error>
+        </mat-form-field>
+
         </div>
         <div style="text-align: center;">
-            <button mat-stroked-button color="primary" (click)="StartTraining()">Start Training</button>
+            <button mat-stroked-button color="primary" (click)="StartTraining_1()">Start Training Session 1</button>
         </div>
     </div>
-    <div [hidden]="hide_training_session">
+    <div [hidden]="hide_training_session_1">
         <br>
         <div class="intro2" style="width: 50%;border: 1px solid black;margin:0 auto;">This experiment is to compare visual quality of video pairs. 
         You will be shown video pairs in random order. Videos will be in different quality and you are asked to compare the quality between the two videos shown to you.
         Below lists a few examples of the video pairs similar to videos you will see in the test. </div>  
         <br>
 
-    <h2 class="Subtitle">Internal Viewing Session</h2>
+    <h2 class="Subtitle">Training Session 1: Low quality videos</h2>
     <br>
     <br>
     <h3 class="intro">Video Examples:</h3>
     <br>
-    <h3 class="intro">Samples videos with low quality:</h3>
+    <h3 class="intro">Left and Right are similar:</h3>
         <!-- Aug 30. Internal test: show some sample videos -->   
         <mat-grid-list cols="2" rowHeight="2:1">
 
@@ -64,7 +74,7 @@
         </mat-grid-tile>
         </mat-grid-list>
 
-    <h3 class="intro">Samples videos with medium quality:</h3>
+    <h3 class="intro">Left is little better than right:</h3>
         <!-- Aug 30. Internal test: show some sample videos -->   
         <mat-grid-list cols="2" rowHeight="2:1">
 
@@ -82,7 +92,7 @@
         </mat-grid-tile>
         </mat-grid-list>
 
-    <h3 class="intro">Samples videos with high quality:</h3>
+    <h3 class="intro">Left is much better than right:</h3>
         <!-- Aug 30. Internal test: show some sample videos -->   
         <mat-grid-list cols="2" rowHeight="2:1">
 
@@ -101,15 +111,7 @@
         </mat-grid-list>
 
 
-        
-
-
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    
     <div class="intro2" style="width: 50%;border: 1px solid black;margin:0 auto;">When you are ready for the experiment, please click 'Finish Training' button below and click 'Start Test' button of next page.</div>
     <br>
     <div style="text-align: center;">
@@ -120,21 +122,84 @@
     </div>
     </div>
 
-    <div [hidden]="hide_choosing_session"><!--Choose test group A or B-->
-        <mat-form-field>
-            <mat-label>Choose test A or B:</mat-label>
-            <mat-select [formControl]="ChooseTestControl" required [(value)]="save_result.chosen_test">
-              <mat-option>--</mat-option>
-              <mat-option value="A">A</mat-option>
-              <mat-option value="B">B</mat-option>
-            </mat-select>
-            <mat-error *ngIf="ChooseTestControl.hasError('required')">Please choose a test</mat-error>
-        </mat-form-field>
+    <div [hidden]="hide_training_session_2">
+        <br>
+        <div class="intro2" style="width: 50%;border: 1px solid black;margin:0 auto;">This experiment is to compare visual quality of video pairs. 
+        You will be shown video pairs in random order. Videos will be in different quality and you are asked to compare the quality between the two videos shown to you.
+        Below lists a few examples of the video pairs similar to videos you will see in the test. </div>  
+        <br>
+
+    <h2 class="Subtitle">Training Session 2: High quality videos</h2>
     <br>
-        <div style="text-align: center;">
-        <button mat-stroked-button color="primary" (click)="FinishChoosing()">Start chosen test</button>
-        </div>
+    <br>
+    <h3 class="intro">Video Examples:</h3>
+    <br>
+    <h3 class="intro">Left and Right are similar:</h3>
+        <!-- Aug 30. Internal test: show some sample videos -->   
+        <mat-grid-list cols="2" rowHeight="2:1">
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <div>
+                <div class="SmallTitle">System 1:</div>
+                <video #vid1 src="../assets/videos/redandblack_40_after.mp4" preload controls muted autoPlay loop playsinline></video>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <div>
+                <div class="SmallTitle">System 2:</div>
+                <video  #vid2 src="../assets/videos/redandblack_40.mp4" preload controls muted autoPlay loop playsinline></video>
+            </div>
+        </mat-grid-tile>
+        </mat-grid-list>
+
+    <h3 class="intro">Left is little better than right:</h3>
+        <!-- Aug 30. Internal test: show some sample videos -->   
+        <mat-grid-list cols="2" rowHeight="2:1">
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <div>
+                <div class="SmallTitle">System 1:</div>
+                <video #vid1 src="../assets/videos/redandblack_40_after.mp4" preload controls muted autoPlay loop playsinline></video>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <div>
+                <div class="SmallTitle">System 2:</div>
+                <video  #vid2 src="../assets/videos/redandblack_40.mp4" preload controls muted autoPlay loop playsinline></video>
+            </div>
+        </mat-grid-tile>
+        </mat-grid-list>
+
+    <h3 class="intro">Left is much better than right:</h3>
+        <!-- Aug 30. Internal test: show some sample videos -->   
+        <mat-grid-list cols="2" rowHeight="2:1">
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <div>
+                <div class="SmallTitle">System 1:</div>
+                <video #vid1 src="../assets/videos/redandblack_40_after.mp4" preload controls muted autoPlay loop playsinline></video>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <div>
+                <div class="SmallTitle">System 2:</div>
+                <video  #vid2 src="../assets/videos/redandblack_40.mp4" preload controls muted autoPlay loop playsinline></video>
+            </div>
+        </mat-grid-tile>
+        </mat-grid-list>
+
+
+    
+    <div class="intro2" style="width: 50%;border: 1px solid black;margin:0 auto;">When you are ready for the experiment, please click 'Finish Training' button below and click 'Start Test' button of next page.</div>
+    <br>
+    <div style="text-align: center;">
+    <button mat-stroked-button color="primary" (click)="FinishTraining()">Finish Training</button>
     </div>
+    <div>
+        <br>
+    </div>
+    </div>
+
 
 
     <div [hidden]="hide_testing_session">
@@ -172,7 +237,7 @@
     
         <mat-grid-tile [colspan]="2">
             <div>
-                <button mat-stroked-button color="primary" (click)="StartTest()" [disabled]="start_button_disable">Start Test</button>
+                <button mat-stroked-button color="primary" (click)="StartTest_1()" [disabled]="start_button_disable">Start Test</button>
                 <div id="example-radio-group-label">Make your choice:</div>
                 <div>
                     <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="userchoice">
@@ -190,6 +255,8 @@
         </mat-grid-tile>
     </mat-grid-list>
     </div>
+
+
     <div [hidden]="hide_save_session" style="text-align: center;">
         <h1>You've finished the experiment! Thank you very much!</h1>
         <h2>Please download the file. </h2>

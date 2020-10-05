@@ -31,21 +31,24 @@ export class MainComponent implements OnInit {
 
   userchoice: string="";
   hide_switch: boolean = true;
-  hide_training_session: boolean = true;
+  hide_training_session_1: boolean = true;
   hide_testing_session: boolean = true;
+  hide_training_session_2: boolean = true;
   hide_save_session: boolean = true;
   hide_personal_info: boolean = false;
-  hide_choosing_session: boolean  = true;
+  //hide_choosing_session: boolean  = true;
   show_images: boolean = false;
   src_video_path1: string="";
   src_video_path2: string="";
   test_length: number;
   user_file_index: number;
   user_file_path: string;
-  video_specs_path: string;
+  video_specs_1_path: string;
+  video_specs_2_path: string;
   start_button_disable: boolean = false;
   orders: any;
-  file_index: number=0;
+  file_index: number = 0;
+  test_session: number = 1;
   save_result: result_all=new result_all();
   GenderControl = new FormControl('', Validators.required);
   ChooseTestControl = new FormControl('', Validators.required);
@@ -57,60 +60,45 @@ export class MainComponent implements OnInit {
     this.save_result.name = "";
     this.save_result.age = 0;
     this.save_result.gender = "";
-    this.save_result.chosen_file = "";
+    //this.save_result.chosen_file = "";
     this.save_result.chosen_test= "";
     this.save_result.recorded_result = [];
 
-    //(async () => { 
-      // Do something before delay
-    //  console.log('before delay')
-
-    //  await this.delay(4000);
-
-      // Do something after
-    //  console.log('after delay')
-
-    //  this.vid1.nativeElement.play();
-
-    //})();
+   
 
     
   }
 
-  async StartTest() {
+  StartTest_1() {
     this.start_button_disable = true;
     if (this.save_result.chosen_test =='A'){
-    this.test_length=49;
-    this.video_specs_path="../assets/json/specs_A.json";
+    this.test_length=18;
+    this.video_specs_1_path="../assets/json/specs_A_G1.json";
+    this.video_specs_2_path="../assets/json/specs_A_G2.json";
 }
     else if (this.save_result.chosen_test =='B'){
-    this.test_length=48;
-    this.video_specs_path="../assets/json/specs_B.json";
+    this.test_length=17;
+    this.video_specs_1_path="../assets/json/specs_B_G1.json";
+    this.video_specs_2_path="../assets/json/specs_B_G2.json";
 }
   
-
-    //this.user_file_index = Math.floor(Math.random() * 40)+1;
-    //this.user_file_path = "../assets/json/file"+this.user_file_index+".json";
-    this.save_result.chosen_file = this.video_specs_path;
-    console.log(this.video_specs_path);
+    console.log(this.video_specs_1_path);
     console.log(this.user_file_path);
     console.log("1");
-    this.httpClient.get(this.video_specs_path).subscribe(data =>{
+
+    this.httpClient.get(this.video_specs_1_path).subscribe(data =>{
       this.orders = data;
       console.log(this.orders);// This array contains info on which videos to display
       console.log(this.test_length);
       //console.log(this.orders[0][3])
-      if (this.orders[this.file_index][3]==0){// 0 means TSP is on left. 1 means Tiling is on left
-      this.src_video_path1="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+'_'+this.orders[this.file_index][2]+"M_TSP.mkv";
-      this.src_video_path2="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+'_'+this.orders[this.file_index][2]+"M_Tiling.mkv";
+      if (this.orders[this.file_index][2]==0){// 0 means TSP is on left. 1 means Tiling is on left
+      this.src_video_path1="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_TSP.mkv";
+      this.src_video_path2="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_Tiling.mkv";
       }
       else{
-      this.src_video_path1="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+'_'+this.orders[this.file_index][2]+"M_Tiling.mkv";
-      this.src_video_path2="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+'_'+this.orders[this.file_index][2]+"M_TSP.mkv";
+      this.src_video_path1="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_Tiling.mkv";
+      this.src_video_path2="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_TSP.mkv";
       }
-      //this.src_video_path1="../assets/videos/"+this.orders[this.file_index].first_A;
-      //this.src_video_path2="../assets/videos/"+this.orders[this.file_index].second_B;
-      //this.show_images=this.orders[this.file_index].IfImage;
       console.log(this.src_video_path1)
       //this.show_images=(this.orders[this.file_index].IfImage =="true");
       this.show_images=false;
@@ -130,26 +118,79 @@ export class MainComponent implements OnInit {
   
       })();
     }
-
     })
-
   }
+
+  StartTest_2() {
+    this.start_button_disable = true;
+    if (this.save_result.chosen_test =='A'){
+    this.test_length=18;
+    this.video_specs_1_path="../assets/json/specs_A_G1.json";
+    this.video_specs_2_path="../assets/json/specs_A_G2.json";
+}
+    else if (this.save_result.chosen_test =='B'){
+    this.test_length=17;
+    this.video_specs_1_path="../assets/json/specs_B_G1.json";
+    this.video_specs_2_path="../assets/json/specs_B_G2.json";
+}
+  
+    console.log(this.video_specs_2_path);
+    console.log(this.user_file_path);
+    console.log("1");
+
+    this.httpClient.get(this.video_specs_2_path).subscribe(data =>{
+      this.orders = data;
+      console.log(this.orders);// This array contains info on which videos to display
+      console.log(this.test_length);
+      //console.log(this.orders[0][3])
+      if (this.orders[this.file_index][2]==0){// 0 means TSP is on left. 1 means Tiling is on left
+      this.src_video_path1="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_TSP.mkv";
+      this.src_video_path2="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_Tiling.mkv";
+      }
+      else{
+      this.src_video_path1="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_Tiling.mkv";
+      this.src_video_path2="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_TSP.mkv";
+      }
+      console.log(this.src_video_path1)
+      //this.show_images=(this.orders[this.file_index].IfImage =="true");
+      this.show_images=false;
+      if (this.show_images == false){
+
+      (async () => { 
+        // Do something before delay
+        console.log('before delay')
+  
+        await this.delay(1000);
+  
+        // Do something after
+        console.log('after delay')
+  
+        this.vidA.nativeElement.play();
+        this.vidB.nativeElement.play();
+  
+      })();
+    }
+    })
+  }
+  
 
   FinishTraining() {
-    //this.hide_testing_session = false;
-    this.hide_choosing_session = false;
-    this.hide_training_session = true;
+    if (this.test_session == 1){
+      this.hide_testing_session = false;
+      this.hide_training_session_1 = true;
+  }
+    else if (this.test_session == 2){
+      this.hide_testing_session = false;
+      this.hide_training_session_2 = true;
+    }
+
   }
 
-  FinishChoosing(){
-    this.hide_testing_session = false;
-    this.hide_choosing_session = true;  
-  }
 
-  StartTraining() {
+  StartTraining_1() {
     this.hide_personal_info = true;
     this.hide_testing_session = true;
-    this.hide_training_session = false;
+    this.hide_training_session_1 = false;
 
 
     (async () => { 
@@ -176,61 +217,117 @@ export class MainComponent implements OnInit {
   }
 
   JumpTo() {
-    if (this.userchoice === ""){
-      this.hide_switch = false;
-      //this.alertService.error("Try again!");
-      //this.router.navigate(['/iloveu']);
-    }else{
-      this.hide_switch = true;
-
-      this.save_result.recorded_result.push(new result());
-      this.save_result.recorded_result[this.file_index].id = this.file_index;
-      this.save_result.recorded_result[this.file_index].choice = this.userchoice;
-
-      this.file_index = this.file_index + 1;
-
-      if (this.file_index === this.test_length){
-        console.log(this.save_result);
-        this.hide_testing_session = true;
-        this.hide_save_session = false;
-
+    console.log('file number:'+this.file_index);
+    if (this.test_session ==1){
+      if (this.userchoice === ""){
+        this.hide_switch = false;
+        //this.alertService.error("Try again!");
+        //this.router.navigate(['/iloveu']);
       }else{
-        this.userchoice = null;
-        if (this.orders[this.file_index][3]==0){// 0 means TSP is on left. 1 means Tiling is on left
-          this.src_video_path1="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+'_'+this.orders[this.file_index][2]+"M_TSP.mkv";
-          this.src_video_path2="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+'_'+this.orders[this.file_index][2]+"M_Tiling.mkv";
-        }
-        else{
-          this.src_video_path1="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+'_'+this.orders[this.file_index][2]+"M_Tiling.mkv";
-          this.src_video_path2="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+'_'+this.orders[this.file_index][2]+"M_TSP.mkv";
-        }
-        //this.src_video_path1="../assets/videos/"+this.orders[this.file_index].first_A;
-        //this.src_video_path2="../assets/videos/"+this.orders[this.file_index].second_B;
-        //this.show_images=(this.orders[this.file_index].IfImage =="true");
-        //this.show_images=this.orders[this.file_index].IfImage;
-        console.log(this.src_video_path1);
-        console.log(this.src_video_path2);
-        if (this.show_images == false){
+        this.hide_switch = true;
 
-          (async () => { 
-            // Do something before delay
-            console.log('before delay')
-      
-            await this.delay(1000);
-      
-            // Do something after
-            console.log('after delay')
-      
-            this.vidA.nativeElement.play();
-            this.vidB.nativeElement.play();
-      
-          })();
+        this.save_result.recorded_result.push(new result());
+        this.save_result.recorded_result[this.file_index].id = this.file_index;
+        this.save_result.recorded_result[this.file_index].choice = this.userchoice;
+
+        this.file_index = this.file_index + 1;
+
+        if (this.file_index === this.test_length){
+          console.log(this.save_result);
+          this.hide_testing_session = true;
+          //this.hide_save_session = false;
+          //this.file_index = 0;
+          this.hide_training_session_2 = false;
+          this.test_session = 2;
+
+        }else{
+          this.userchoice = null;
+          if (this.orders[this.file_index][2]==0){// 0 means TSP is on left. 1 means Tiling is on left
+            this.src_video_path1="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_TSP.mkv";
+            this.src_video_path2="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_Tiling.mkv";
+          }
+          else{
+            this.src_video_path1="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_Tiling.mkv";
+            this.src_video_path2="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_TSP.mkv";
+          }
+          console.log(this.src_video_path1);
+          console.log(this.src_video_path2);
+          if (this.show_images == false){
+
+            (async () => { 
+              // Do something before delay
+              console.log('before delay')
+        
+              await this.delay(1000);
+        
+              // Do something after
+              console.log('after delay')
+        
+              this.vidA.nativeElement.play();
+              this.vidB.nativeElement.play();
+        
+            })();
+          }
         }
       }
-      //this.Ifvalid = false;
-      //this.alertService.error("Try again!");
+    }
+    else if (this. test_session ==2){
+      if (this.userchoice === ""){
+        this.hide_switch = false;
+        //this.alertService.error("Try again!");
+        //this.router.navigate(['/iloveu']);
+      }else{
+        this.hide_switch = true;
+
+        this.save_result.recorded_result.push(new result());
+        this.save_result.recorded_result[this.file_index].id = this.file_index;
+        this.save_result.recorded_result[this.file_index].choice = this.userchoice;
+
+        this.file_index = this.file_index + 1;
+
+        if (this.file_index === this.test_length*2){
+          console.log(this.save_result);
+          this.hide_testing_session = true;
+          this.hide_save_session = false;
+          //this.file_index = 0;
+
+        }else{
+          this.userchoice = null;
+          if (this.orders[this.file_index][2]==0){// 0 means TSP is on left. 1 means Tiling is on left
+            this.src_video_path1="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_TSP.mkv";
+            this.src_video_path2="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_Tiling.mkv";
+          }
+          else{
+            this.src_video_path1="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_Tiling.mkv";
+            this.src_video_path2="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_TSP.mkv";
+          }
+          console.log(this.src_video_path1);
+          console.log(this.src_video_path2);
+          if (this.show_images == false){
+
+            (async () => { 
+              // Do something before delay
+              console.log('before delay')
+        
+              await this.delay(1000);
+        
+              // Do something after
+              console.log('after delay')
+        
+              this.vidA.nativeElement.play();
+              this.vidB.nativeElement.play();
+        
+            })();
+          }
+        }
+      }
+
+      
     }
   }
+
+
+       
 
   get dataUri(): SafeUrl {
     const jsonData = JSON.stringify(this.save_result);
