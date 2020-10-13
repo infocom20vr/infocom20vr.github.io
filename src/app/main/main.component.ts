@@ -91,13 +91,13 @@ export class MainComponent implements OnInit {
       console.log(this.orders);// This array contains info on which videos to display
       console.log(this.test_length);
       //console.log(this.orders[0][3])
-      if (this.orders[this.file_index][2]==0){// 0 means TSP is on left. 1 means Tiling is on left
-      this.src_video_path1="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_TSP.mkv";
-      this.src_video_path2="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_Tiling.mkv";
+      if (this.orders[this.file_index][2]==0){// 0 means TSP is on left. 1 means tiling is on left
+      this.src_video_path1="F:/VR_video_data/TSP/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_TSP.webm";
+      this.src_video_path2="F:/VR_video_data/tiling/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_tiling.webm";
       }
       else{
-      this.src_video_path1="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_Tiling.mkv";
-      this.src_video_path2="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_TSP.mkv";
+      this.src_video_path1="F:/VR_video_data/tiling/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_tiling.webm";
+      this.src_video_path2="F:/VR_video_data/TSP/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_TSP.webm";
       }
       console.log(this.src_video_path1)
       //this.show_images=(this.orders[this.file_index].IfImage =="true");
@@ -143,13 +143,13 @@ export class MainComponent implements OnInit {
       console.log(this.orders);// This array contains info on which videos to display
       console.log(this.test_length);
       //console.log(this.orders[0][3])
-      if (this.orders[this.file_index][2]==0){// 0 means TSP is on left. 1 means Tiling is on left
-      this.src_video_path1="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_TSP.mkv";
-      this.src_video_path2="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_Tiling.mkv";
+      if (this.orders[this.file_index][2]==0){// 0 means TSP is on left. 1 means tiling is on left
+      this.src_video_path1="F:/VR_video_data/TSP/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_TSP.webm";
+      this.src_video_path2="F:/VR_video_data/tiling/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_tiling.webm";
       }
       else{
-      this.src_video_path1="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_Tiling.mkv";
-      this.src_video_path2="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_TSP.mkv";
+      this.src_video_path1="F:/VR_video_data/tiling/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_tiling.webm";
+      this.src_video_path2="F:/VR_video_data/TSP/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_TSP.webm";
       }
       console.log(this.src_video_path1)
       //this.show_images=(this.orders[this.file_index].IfImage =="true");
@@ -197,7 +197,7 @@ export class MainComponent implements OnInit {
       // Do something before delay
       console.log('before delay')
 
-      await this.delay(1000);
+      await this.delay(5000);
 
       // Do something after
       console.log('after delay')
@@ -242,13 +242,13 @@ export class MainComponent implements OnInit {
 
         }else{
           this.userchoice = null;
-          if (this.orders[this.file_index][2]==0){// 0 means TSP is on left. 1 means Tiling is on left
-            this.src_video_path1="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_TSP.mkv";
-            this.src_video_path2="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_Tiling.mkv";
+          if (this.orders[this.file_index][2]==0){// 0 means TSP is on left. 1 means tiling is on left
+            this.src_video_path1="F:/VR_video_data/TSP/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_TSP.webm";
+            this.src_video_path2="F:/VR_video_data/tiling/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_tiling.webm";
           }
           else{
-            this.src_video_path1="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_Tiling.mkv";
-            this.src_video_path2="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_TSP.mkv";
+            this.src_video_path1="F:/VR_video_data/tiling/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_tiling.webm";
+            this.src_video_path2="F:/VR_video_data/TSP/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_TSP.webm";
           }
           console.log(this.src_video_path1);
           console.log(this.src_video_path2);
@@ -258,7 +258,7 @@ export class MainComponent implements OnInit {
               // Do something before delay
               console.log('before delay')
         
-              await this.delay(1000);
+              await this.delay(5000);
         
               // Do something after
               console.log('after delay')
@@ -293,13 +293,13 @@ export class MainComponent implements OnInit {
 
         }else{
           this.userchoice = null;
-          if (this.orders[this.file_index][2]==0){// 0 means TSP is on left. 1 means Tiling is on left
-            this.src_video_path1="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_TSP.mkv";
-            this.src_video_path2="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_Tiling.mkv";
+          if (this.orders[this.file_index][2]==0){// 0 means TSP is on left. 1 means tiling is on left
+            this.src_video_path1="F:/VR_video_data/TSP/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_TSP.webm";
+            this.src_video_path2="F:/VR_video_data/tiling/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_tiling.webm";
           }
           else{
-            this.src_video_path1="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_Tiling.mkv";
-            this.src_video_path2="../assets/videos/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_TSP.mkv";
+            this.src_video_path1="F:/VR_video_data/tiling/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_tiling.webm";
+            this.src_video_path2="F:/VR_video_data/TSP/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_TSP.webm";
           }
           console.log(this.src_video_path1);
           console.log(this.src_video_path2);
@@ -309,7 +309,7 @@ export class MainComponent implements OnInit {
               // Do something before delay
               console.log('before delay')
         
-              await this.delay(1000);
+              await this.delay(5000);
         
               // Do something after
               console.log('after delay')
