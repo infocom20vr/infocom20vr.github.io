@@ -7,7 +7,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+	"large-build": "node --max_old_space_size=13312 /node_modules/@angular/cli/bin/ng build --aot --prod",
+	"large-serve": "node --max_old_space_size=13312 ./node_modules/@angular/cli/bin/ng serve --aot --prod"
   },
   "private": true,
   "dependencies": {

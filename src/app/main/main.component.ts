@@ -92,12 +92,12 @@ export class MainComponent implements OnInit {
       console.log(this.test_length);
       //console.log(this.orders[0][3])
       if (this.orders[this.file_index][2]==0){// 0 means TSP is on left. 1 means tiling is on left
-      this.src_video_path1="F:/VR_video_data/TSP/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_TSP.webm";
-      this.src_video_path2="F:/VR_video_data/tiling/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_tiling.webm";
+      this.src_video_path1="../assets/video/TSP/"+this.save_result.chosen_test+"_G1/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_TSP.webm";
+      this.src_video_path2="../assets/video/tiling/"+this.save_result.chosen_test+"_G1/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_tiling.webm";
       }
       else{
-      this.src_video_path1="F:/VR_video_data/tiling/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_tiling.webm";
-      this.src_video_path2="F:/VR_video_data/TSP/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_TSP.webm";
+      this.src_video_path1="../assets/video/tiling/"+this.save_result.chosen_test+"_G1/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_tiling.webm";
+      this.src_video_path2="../assets/video/TSP/"+this.save_result.chosen_test+"_G1/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_TSP.webm";
       }
       console.log(this.src_video_path1)
       //this.show_images=(this.orders[this.file_index].IfImage =="true");
@@ -144,12 +144,12 @@ export class MainComponent implements OnInit {
       console.log(this.test_length);
       //console.log(this.orders[0][3])
       if (this.orders[this.file_index][2]==0){// 0 means TSP is on left. 1 means tiling is on left
-      this.src_video_path1="F:/VR_video_data/TSP/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_TSP.webm";
-      this.src_video_path2="F:/VR_video_data/tiling/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_tiling.webm";
+      this.src_video_path1="../assets/video/TSP/"+this.save_result.chosen_test+"_G2/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_TSP.webm";
+      this.src_video_path2="../assets/video/tiling/"+this.save_result.chosen_test+"_G2/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_tiling.webm";
       }
       else{
-      this.src_video_path1="F:/VR_video_data/tiling/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_tiling.webm";
-      this.src_video_path2="F:/VR_video_data/TSP/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_TSP.webm";
+      this.src_video_path1="../assets/video/tiling/"+this.save_result.chosen_test+"_G2/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_tiling.webm";
+      this.src_video_path2="../assets/video/TSP/"+this.save_result.chosen_test+"_G2/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_TSP.webm";
       }
       console.log(this.src_video_path1)
       //this.show_images=(this.orders[this.file_index].IfImage =="true");
@@ -243,12 +243,12 @@ export class MainComponent implements OnInit {
         }else{
           this.userchoice = null;
           if (this.orders[this.file_index][2]==0){// 0 means TSP is on left. 1 means tiling is on left
-            this.src_video_path1="F:/VR_video_data/TSP/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_TSP.webm";
-            this.src_video_path2="F:/VR_video_data/tiling/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_tiling.webm";
+            this.src_video_path1="../assets/video/TSP/"+this.save_result.chosen_test+"_G1/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_TSP.webm";
+            this.src_video_path2="../assets/video/tiling/"+this.save_result.chosen_test+"_G1/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_tiling.webm";
           }
           else{
-            this.src_video_path1="F:/VR_video_data/tiling/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_tiling.webm";
-            this.src_video_path2="F:/VR_video_data/TSP/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_TSP.webm";
+            this.src_video_path1="../assets/video/tiling/"+this.save_result.chosen_test+"_G1/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_tiling.webm";
+            this.src_video_path2="../assets/video/TSP/"+this.save_result.chosen_test+"_G1/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_TSP.webm";
           }
           console.log(this.src_video_path1);
           console.log(this.src_video_path2);
@@ -294,12 +294,12 @@ export class MainComponent implements OnInit {
         }else{
           this.userchoice = null;
           if (this.orders[this.file_index][2]==0){// 0 means TSP is on left. 1 means tiling is on left
-            this.src_video_path1="F:/VR_video_data/TSP/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_TSP.webm";
-            this.src_video_path2="F:/VR_video_data/tiling/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_tiling.webm";
+            this.src_video_path1="../assets/video/TSP/"+this.save_result.chosen_test+"_G2/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_TSP.webm";
+            this.src_video_path2="../assets/video/tiling/"+this.save_result.chosen_test+"_G2/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_tiling.webm";
           }
           else{
-            this.src_video_path1="F:/VR_video_data/tiling/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_tiling.webm";
-            this.src_video_path2="F:/VR_video_data/TSP/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_TSP.webm";
+            this.src_video_path1="../assets/video/tiling/"+this.save_result.chosen_test+"_G2/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_tiling.webm";
+            this.src_video_path2="../assets/video/TSP/"+this.save_result.chosen_test+"_G2/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_TSP.webm";
           }
           console.log(this.src_video_path1);
           console.log(this.src_video_path2);
