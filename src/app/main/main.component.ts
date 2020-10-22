@@ -31,9 +31,8 @@ export class MainComponent implements OnInit {
 
   userchoice: string="";
   hide_switch: boolean = true;
-  hide_training_session_1: boolean = true;
+  hide_training_session: boolean = true;
   hide_testing_session: boolean = true;
-  hide_training_session_2: boolean = true;
   hide_save_session: boolean = true;
   hide_personal_info: boolean = false;
   //hide_choosing_session: boolean  = true;
@@ -43,12 +42,10 @@ export class MainComponent implements OnInit {
   test_length: number;
   user_file_index: number;
   user_file_path: string;
-  video_specs_1_path: string;
-  video_specs_2_path: string;
+  video_specs_path: string;
   start_button_disable: boolean = false;
   orders: any;
   file_index: number = 0;
-  test_session: number = 1;
   save_result: result_all=new result_all();
   GenderControl = new FormControl('', Validators.required);
   ChooseTestControl = new FormControl('', Validators.required);
@@ -69,24 +66,22 @@ export class MainComponent implements OnInit {
     
   }
 
-  StartTest_1() {
+  StartTest() {
     this.start_button_disable = true;
     if (this.save_result.chosen_test =='A'){
     this.test_length=18;
-    this.video_specs_1_path="../assets/json/specs_A_G1.json";
-    this.video_specs_2_path="../assets/json/specs_A_G2.json";
+    this.video_specs_path="../assets/json/specs_A_G1.json";
 }
     else if (this.save_result.chosen_test =='B'){
     this.test_length=17;
-    this.video_specs_1_path="../assets/json/specs_B_G1.json";
-    this.video_specs_2_path="../assets/json/specs_B_G2.json";
+    this.video_specs_path="../assets/json/specs_B_G1.json";
 }
   
-    console.log(this.video_specs_1_path);
+    console.log(this.video_specs_path);
     console.log(this.user_file_path);
     console.log("1");
 
-    this.httpClient.get(this.video_specs_1_path).subscribe(data =>{
+    this.httpClient.get(this.video_specs_path).subscribe(data =>{
       this.orders = data;
       console.log(this.orders);// This array contains info on which videos to display
       console.log(this.test_length);
@@ -121,76 +116,19 @@ export class MainComponent implements OnInit {
     })
   }
 
-  StartTest_2() {
-    this.start_button_disable = true;
-    if (this.save_result.chosen_test =='A'){
-    this.test_length=18;
-    this.video_specs_1_path="../assets/json/specs_A_G1.json";
-    this.video_specs_2_path="../assets/json/specs_A_G2.json";
-}
-    else if (this.save_result.chosen_test =='B'){
-    this.test_length=17;
-    this.video_specs_1_path="../assets/json/specs_B_G1.json";
-    this.video_specs_2_path="../assets/json/specs_B_G2.json";
-}
-  
-    console.log(this.video_specs_2_path);
-    console.log(this.user_file_path);
-    console.log("1");
 
-    this.httpClient.get(this.video_specs_2_path).subscribe(data =>{
-      this.orders = data;
-      console.log(this.orders);// This array contains info on which videos to display
-      console.log(this.test_length);
-      //console.log(this.orders[0][3])
-      if (this.orders[this.file_index][2]==0){// 0 means TSP is on left. 1 means tiling is on left
-      this.src_video_path1="../assets/video/TSP/"+this.save_result.chosen_test+"_G2/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_TSP.webm";
-      this.src_video_path2="../assets/video/tiling/"+this.save_result.chosen_test+"_G2/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_tiling.webm";
-      }
-      else{
-      this.src_video_path1="../assets/video/tiling/"+this.save_result.chosen_test+"_G2/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_tiling.webm";
-      this.src_video_path2="../assets/video/TSP/"+this.save_result.chosen_test+"_G2/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_TSP.webm";
-      }
-      console.log(this.src_video_path1)
-      //this.show_images=(this.orders[this.file_index].IfImage =="true");
-      this.show_images=false;
-      if (this.show_images == false){
-
-      (async () => { 
-        // Do something before delay
-        console.log('before delay')
-  
-        await this.delay(1000);
-  
-        // Do something after
-        console.log('after delay')
-  
-        this.vidA.nativeElement.play();
-        this.vidB.nativeElement.play();
-  
-      })();
-    }
-    })
-  }
   
 
   FinishTraining() {
-    if (this.test_session == 1){
       this.hide_testing_session = false;
-      this.hide_training_session_1 = true;
-  }
-    else if (this.test_session == 2){
-      this.hide_testing_session = false;
-      this.hide_training_session_2 = true;
-    }
-
+      this.hide_training_session = true;
   }
 
 
-  StartTraining_1() {
+  StartTraining() {
     this.hide_personal_info = true;
     this.hide_testing_session = true;
-    this.hide_training_session_1 = false;
+    this.hide_training_session = false;
 
 
     (async () => { 
@@ -218,7 +156,6 @@ export class MainComponent implements OnInit {
 
   JumpTo() {
     console.log('file number:'+this.file_index);
-    if (this.test_session ==1){
       if (this.userchoice === ""){
         this.hide_switch = false;
         //this.alertService.error("Try again!");
@@ -235,11 +172,7 @@ export class MainComponent implements OnInit {
         if (this.file_index === this.test_length){
           console.log(this.save_result);
           this.hide_testing_session = true;
-          //this.hide_save_session = false;
-          //this.file_index = 0;
-          this.hide_training_session_2 = false;
-          this.test_session = 2;
-
+          this.hide_save_session = false;
         }else{
           this.userchoice = null;
           if (this.orders[this.file_index][2]==0){// 0 means TSP is on left. 1 means tiling is on left
@@ -270,60 +203,8 @@ export class MainComponent implements OnInit {
           }
         }
       }
-    }
-    else if (this. test_session ==2){
-      if (this.userchoice === ""){
-        this.hide_switch = false;
-        //this.alertService.error("Try again!");
-        //this.router.navigate(['/iloveu']);
-      }else{
-        this.hide_switch = true;
 
-        this.save_result.recorded_result.push(new result());
-        this.save_result.recorded_result[this.file_index].id = this.file_index;
-        this.save_result.recorded_result[this.file_index].choice = this.userchoice;
 
-        this.file_index = this.file_index + 1;
-
-        if (this.file_index === this.test_length*2){
-          console.log(this.save_result);
-          this.hide_testing_session = true;
-          this.hide_save_session = false;
-          //this.file_index = 0;
-
-        }else{
-          this.userchoice = null;
-          if (this.orders[this.file_index][2]==0){// 0 means TSP is on left. 1 means tiling is on left
-            this.src_video_path1="../assets/video/TSP/"+this.save_result.chosen_test+"_G2/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_TSP.webm";
-            this.src_video_path2="../assets/video/tiling/"+this.save_result.chosen_test+"_G2/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_tiling.webm";
-          }
-          else{
-            this.src_video_path1="../assets/video/tiling/"+this.save_result.chosen_test+"_G2/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_tiling.webm";
-            this.src_video_path2="../assets/video/TSP/"+this.save_result.chosen_test+"_G2/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_TSP.webm";
-          }
-          console.log(this.src_video_path1);
-          console.log(this.src_video_path2);
-          if (this.show_images == false){
-
-            (async () => { 
-              // Do something before delay
-              console.log('before delay')
-        
-              await this.delay(5000);
-        
-              // Do something after
-              console.log('after delay')
-        
-              this.vidA.nativeElement.play();
-              this.vidB.nativeElement.play();
-        
-            })();
-          }
-        }
-      }
-
-      
-    }
   }
 
 
