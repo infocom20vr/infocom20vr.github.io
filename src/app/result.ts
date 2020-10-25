@@ -1,5 +1,6 @@
 export class result {
     id: number;
+	spec: Array<number>;
     choice: string;
   }
 

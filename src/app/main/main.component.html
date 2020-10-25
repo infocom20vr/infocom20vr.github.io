@@ -58,57 +58,27 @@
     <br>
     <h3 class="intro">Left and Right are similar:</h3>
         <!-- Aug 30. Internal test: show some sample videos -->   
-        <mat-grid-list cols="2" rowHeight="2:2">
-
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-            <div>
-                <div class="SmallTitle">System 1:</div>
-                <video #vid1 src="../assets/videos/vid1_1_5M_TSP_lossless.webm" preload controls muted autoPlay loop playsinline></video>
-            </div>
+    <mat-grid-list cols="10" rowHeight="1:4">
+        <mat-grid-tile [colspan]="8">
+            <video #vid1 src="http://127.0.0.1/A_G1/vid9_3_5M_1.webm" preload controls muted loop playsinline></video>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-            <div>
-                <div class="SmallTitle">System 2:</div>
-                <video  #vid2 src="../assets/videos/vid1_1_5M_TSP_lossless.webm" preload controls muted autoPlay loop playsinline></video>
-            </div>
-        </mat-grid-tile>
-        </mat-grid-list>
+    </mat-grid-list>
 
     <h3 class="intro">Left is little better than right:</h3>
         <!-- Aug 30. Internal test: show some sample videos -->   
-        <mat-grid-list cols="2" rowHeight="2:2">
-
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-            <div>
-                <div class="SmallTitle">System 1:</div>
-                <video #vid1 src="../assets/videos/vid1_1_5M_TSP.webm" preload controls muted loop playsinline></video>
-            </div>
+    <mat-grid-list cols="10" rowHeight="1:4">
+        <mat-grid-tile [colspan]="8">
+            <video #vid2 src="http://127.0.0.1/A_G1/vid3_1_5M_0.webm" preload controls muted loop playsinline></video>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-            <div>
-                <div class="SmallTitle">System 2:</div>
-                <video  #vid2 src="../assets/videos/vid1_1_5M_TSP.webm" preload controls muted loop playsinline></video>
-            </div>
-        </mat-grid-tile>
-        </mat-grid-list>
+    </mat-grid-list>
 
     <h3 class="intro">Left is much better than right:</h3>
         <!-- Aug 30. Internal test: show some sample videos -->   
-        <mat-grid-list cols="2" rowHeight="2:2">
-
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-            <div>
-                <div class="SmallTitle">System 1:</div>
-                <video #vid1 src="../assets/videos/vid1_1_5M_TSP.webm" preload controls muted loop playsinline></video>
-            </div>
+    <mat-grid-list cols="10" rowHeight="1:4">
+        <mat-grid-tile [colspan]="8">
+            <video #vid3 src="http://127.0.0.1/A_G1/vid4_3_5M_0.webm" preload controls muted loop playsinline></video>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-            <div>
-                <div class="SmallTitle">System 2:</div>
-                <video  #vid2 src="../assets/videos/vid1_1_5M_TSP.webm" preload controls muted loop playsinline></video>
-            </div>
-        </mat-grid-tile>
-        </mat-grid-list>
+    </mat-grid-list>
 
 
     
@@ -129,35 +99,11 @@
 
     <div [hidden]="hide_testing_session">
     <mat-grid-list cols="10" rowHeight="1:4">
-
-        <mat-grid-tile [colspan]="4">
-            <div [hidden]="show_images">
-                <div class="SmallTitle">Left:</div>
-                <!--<mat-video [src]="src_video_path1"></mat-video>-->
-                <video #vidA [src]="src_video_path1" controls muted autoplay loop playsinline></video>
-                <!--<video [src]="../assets/images/1.png" controls muted autoplay loop playsinline></video>-->
-                <!--<img [src]="src_video_path1">-->
-            </div>
-            <div [hidden]="!show_images">
-                <div class="SmallTitle">Left:</div>
-                <!--<mat-video [src]="src_video_path1"></mat-video>-->
-                <!--<video [src]="../assets/images/1.png" controls muted autoplay loop playsinline></video>-->
-                <img [src]="src_video_path1">
-            </div>
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="4">
-            <div [hidden]="show_images">
-                <div class="SmallTitle">Right:</div>
-                <!--<mat-video [src]="src_video_path1"></mat-video>-->
-                <video #vidB [src]="src_video_path2" controls muted autoPlay loop playsinline></video>
-            <!--<img [src]="src_video_path2">-->
-            </div>
-            <div [hidden]="!show_images">
-                <div class="SmallTitle">Right:</div>
-                <!--<mat-video [src]="src_video_path1"></mat-video>-->
-                <!--<video [src]="../assets/images/1.png" controls muted autoplay loop playsinline></video>-->
-                <img [src]="src_video_path2">
-            </div>
+        <mat-grid-tile [colspan]="8">
+            <!--div [hidden]="show_images"-->
+                <video #vidA [src]="src_video_path" preload controls muted autoPlay loop playsinline></video>
+                <!--video #vidA src="http://127.0.0.1/A_G1/vid9_3_5M_1.webm" preload controls muted autoPlay loop playsinline></video-->
+            <!--/div-->
         </mat-grid-tile>
     
         <mat-grid-tile [colspan]="2">
@@ -185,8 +131,13 @@
     <div [hidden]="hide_save_session" style="text-align: center;">
         <h1>You've finished the experiment! Thank you very much!</h1>
         <h2>Please download the file. </h2>
-        <a download="my-json-object.json" [href]="dataUri">
+        <a download="result.json" [href]="dataUri">
             <button>Download</button>
         </a>
+
+
     </div>
+
+
+
 </div>

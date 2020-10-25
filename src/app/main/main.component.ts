@@ -16,16 +16,16 @@ export class MainComponent implements OnInit {
   @ViewChild('vid1') vid1: ElementRef;
   @ViewChild('vid2') vid2: ElementRef;
   @ViewChild('vid3') vid3: ElementRef;
-  @ViewChild('vid4') vid4: ElementRef;
-  @ViewChild('vid5') vid5: ElementRef;
-  @ViewChild('vid6') vid6: ElementRef;
-  @ViewChild('vid7') vid7: ElementRef;
-  @ViewChild('vid8') vid8: ElementRef;
-  @ViewChild('vid9') vid9: ElementRef;
-  @ViewChild('vid10') vid10: ElementRef;
+  // @ViewChild('vid4') vid4: ElementRef;
+  // @ViewChild('vid5') vid5: ElementRef;
+  // @ViewChild('vid6') vid6: ElementRef;
+  // @ViewChild('vid7') vid7: ElementRef;
+  // @ViewChild('vid8') vid8: ElementRef;
+  // @ViewChild('vid9') vid9: ElementRef;
+  // @ViewChild('vid10') vid10: ElementRef;
 
   @ViewChild('vidA') vidA: ElementRef;
-  @ViewChild('vidB') vidB: ElementRef;
+  //@ViewChild('vidB') vidB: ElementRef;
 
   constructor(private httpClient: HttpClient, private sanitizer: DomSanitizer) { }
 
@@ -37,12 +37,12 @@ export class MainComponent implements OnInit {
   hide_personal_info: boolean = false;
   //hide_choosing_session: boolean  = true;
   show_images: boolean = false;
-  src_video_path1: string="";
-  src_video_path2: string="";
+  src_video_path: string="";
   test_length: number;
   user_file_index: number;
   user_file_path: string;
   video_specs_path: string;
+  src_dir: string="http://127.0.0.1/A_G1/";
   start_button_disable: boolean = false;
   orders: any;
   file_index: number = 0;
@@ -65,17 +65,16 @@ export class MainComponent implements OnInit {
 
     
   }
-
   StartTest() {
+    
     this.start_button_disable = true;
+    this.test_length=15;
     if (this.save_result.chosen_test =='A'){
-    this.test_length=18;
-    this.video_specs_path="../assets/json/specs_A_G1.json";
-}
+      this.video_specs_path="../assets/json/specs_A_G1.json";
+    }
     else if (this.save_result.chosen_test =='B'){
-    this.test_length=17;
-    this.video_specs_path="../assets/json/specs_B_G1.json";
-}
+      this.video_specs_path="../assets/json/specs_B_G1.json";
+    }
   
     console.log(this.video_specs_path);
     console.log(this.user_file_path);
@@ -85,16 +84,18 @@ export class MainComponent implements OnInit {
       this.orders = data;
       console.log(this.orders);// This array contains info on which videos to display
       console.log(this.test_length);
+      
+      this.src_video_path = this.src_dir + "vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_"+this.orders[this.file_index][2]+".webm";
       //console.log(this.orders[0][3])
-      if (this.orders[this.file_index][2]==0){// 0 means TSP is on left. 1 means tiling is on left
+      /*if (this.orders[this.file_index][2]==0){// 0 means TSP is on left. 1 means tiling is on left
       this.src_video_path1="../assets/video/TSP/"+this.save_result.chosen_test+"_G1/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_TSP.webm";
       this.src_video_path2="../assets/video/tiling/"+this.save_result.chosen_test+"_G1/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_tiling.webm";
       }
       else{
       this.src_video_path1="../assets/video/tiling/"+this.save_result.chosen_test+"_G1/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_tiling.webm";
       this.src_video_path2="../assets/video/TSP/"+this.save_result.chosen_test+"_G1/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_TSP.webm";
-      }
-      console.log(this.src_video_path1)
+      }*/
+      console.log(this.src_video_path)
       //this.show_images=(this.orders[this.file_index].IfImage =="true");
       this.show_images=false;
       if (this.show_images == false){
@@ -103,13 +104,13 @@ export class MainComponent implements OnInit {
         // Do something before delay
         console.log('before delay')
   
-        await this.delay(1000);
+        await this.delay(5000);
   
         // Do something after
         console.log('after delay')
   
         this.vidA.nativeElement.play();
-        this.vidB.nativeElement.play();
+        //this.vidB.nativeElement.play();
   
       })();
     }
@@ -120,6 +121,9 @@ export class MainComponent implements OnInit {
   
 
   FinishTraining() {
+      this.vid1.nativeElement.pause();
+      this.vid2.nativeElement.pause();
+      this.vid3.nativeElement.pause();
       this.hide_testing_session = false;
       this.hide_training_session = true;
   }
@@ -140,16 +144,16 @@ export class MainComponent implements OnInit {
       // Do something after
       console.log('after delay')
 
-      this.vid1.nativeElement.play();
-      this.vid2.nativeElement.play();
-      this.vid3.nativeElement.play();
-      this.vid4.nativeElement.play();
-      this.vid5.nativeElement.play();
-      this.vid6.nativeElement.play();
-      this.vid7.nativeElement.play();
-      this.vid8.nativeElement.play();
-      this.vid9.nativeElement.play();
-      this.vid10.nativeElement.play();
+      //this.vid1.nativeElement.play();
+      //this.vid2.nativeElement.play();
+      //this.vid3.nativeElement.play();
+      // this.vid4.nativeElement.play();
+      // this.vid5.nativeElement.play();
+      // this.vid6.nativeElement.play();
+      // this.vid7.nativeElement.play();
+      // this.vid8.nativeElement.play();
+      // this.vid9.nativeElement.play();
+      // this.vid10.nativeElement.play();
 
     })();
   }
@@ -165,26 +169,20 @@ export class MainComponent implements OnInit {
 
         this.save_result.recorded_result.push(new result());
         this.save_result.recorded_result[this.file_index].id = this.file_index;
+        this.save_result.recorded_result[this.file_index].spec = this.orders[this.file_index];
         this.save_result.recorded_result[this.file_index].choice = this.userchoice;
 
-        this.file_index = this.file_index + 1;
+        
 
         if (this.file_index === this.test_length){
           console.log(this.save_result);
           this.hide_testing_session = true;
           this.hide_save_session = false;
         }else{
+          this.file_index = this.file_index + 1;
           this.userchoice = null;
-          if (this.orders[this.file_index][2]==0){// 0 means TSP is on left. 1 means tiling is on left
-            this.src_video_path1="../assets/video/TSP/"+this.save_result.chosen_test+"_G1/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_TSP.webm";
-            this.src_video_path2="../assets/video/tiling/"+this.save_result.chosen_test+"_G1/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_tiling.webm";
-          }
-          else{
-            this.src_video_path1="../assets/video/tiling/"+this.save_result.chosen_test+"_G1/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_tiling.webm";
-            this.src_video_path2="../assets/video/TSP/"+this.save_result.chosen_test+"_G1/vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_TSP.webm";
-          }
-          console.log(this.src_video_path1);
-          console.log(this.src_video_path2);
+          this.src_video_path = this.src_dir + "vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_"+this.orders[this.file_index][2]+".webm";
+          console.log(this.src_video_path);
           if (this.show_images == false){
 
             (async () => { 
@@ -197,7 +195,7 @@ export class MainComponent implements OnInit {
               console.log('after delay')
         
               this.vidA.nativeElement.play();
-              this.vidB.nativeElement.play();
+              //this.vidB.nativeElement.play();
         
             })();
           }
