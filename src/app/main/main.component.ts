@@ -97,21 +97,21 @@ export class MainComponent implements OnInit {
       this.src_video_path = this.src_dir + "vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_"+this.orders[this.file_index][2]+".webm";
       console.log(this.src_video_path)
       this.show_images=false;
-      if (this.show_images == false){
+    //   if (this.show_images == false){
 
-      // (async () => { 
-      //   // Do something before delay
-      //   console.log('before delay')
+    //   (async () => { 
+    //     // Do something before delay
+    //     console.log('before delay')
   
-      //   await this.delay(1000);
+    //     await this.delay(1000);
   
-      //   // Do something after
-      //   console.log('after delay')
+    //     // Do something after
+    //     console.log('after delay')
   
-      //   this.vidA.nativeElement.play();
+    //     this.vidA.nativeElement.play();
   
-      // })();
-    }
+    //   })();
+    // }
     })
   }
   StartTest_2() {
@@ -125,7 +125,7 @@ export class MainComponent implements OnInit {
       console.log(this.orders);// This array contains info on which videos to display
       console.log(this.test_length);      
       this.src_video_path_2 = this.src_dir + "vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_"+this.orders[this.file_index][2]+".webm";
-      console.log(this.src_video_path_2)
+      //console.log(this.src_video_path_2)
       this.show_images=false;
       if (this.show_images == false){
 
@@ -226,6 +226,8 @@ export class MainComponent implements OnInit {
           this.file_index = this.file_index + 1;
           this.userchoice = null;
           this.src_video_path = this.src_dir + "vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_"+this.orders[this.file_index][2]+".webm";
+          console.log('current file index:'+this.file_index);
+          console.log(this.src_video_path);
           //console.log(this.src_video_path);
           // if (this.show_images == false){
 
@@ -273,13 +275,15 @@ export class MainComponent implements OnInit {
           this.userchoice = null;
           this.src_video_path_2 = this.src_dir + "vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_"+this.orders[this.file_index][2]+".webm";
           //console.log(this.src_video_path_2);
+          //console.log('current file index:'+this.file_index);
+          //console.log(this.src_video_path_2);
           if (this.show_images == false){
 
             (async () => { 
               // Do something before delay
               console.log('before delay');
         
-              await this.delay(5000);
+              await this.delay(1000);
         
               // Do something after
               console.log('after delay');
