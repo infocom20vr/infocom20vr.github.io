@@ -6,9 +6,9 @@ export class result {
   }
 
 export class result_all {
-    name: string;
     age: number;
     gender: string;
+	experience: string;
 	finish_time: string;
     recorded_result: result[];
 }

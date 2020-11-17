@@ -56,34 +56,37 @@ export class MainComponent implements OnInit {
   orders: any;
   test_session: number = 1;
   file_index: number = 0;
+  count_display: number=1;
   file_count: number = 0;
   finish_time: string="";
+  result_file_name: string="";
   save_result: result_all=new result_all();
   GenderControl = new FormControl('', Validators.required);
+  ExpControl = new FormControl('', Validators.required);
   ChooseTestControl = new FormControl('', Validators.required);
   choices: string[] = ['Left is much better than Right', 'Left is a little better than Right', 'Left and Right are similar', 'Left is a little worse than Right', 'Left is much worse than Right'];
 
   
 
   ngOnInit(): void {
-    this.save_result.name = "";
+    //this.save_result.name = "";
     this.save_result.age = 0;
     this.save_result.gender = "";
+    this.save_result.experience = "";
     //this.save_result.chosen_file = "";
     //this.save_result.chosen_test= "";
     this.save_result.recorded_result = [];
-    this.training_video_path_5M_1=this.src_dir+"vid1_1v1_5M.webm";
-    this.training_video_path_5M_2=this.src_dir+"vid1_1v4_5M.webm";
-    this.training_video_path_5M_3=this.src_dir+"vid1_1v1_5M.webm";
-    this.training_video_path_10M_1=this.src_dir+"vid1_1v1_10M.webm";
-    this.training_video_path_10M_2=this.src_dir+"vid1_1v4_10M.webm";
-    this.training_video_path_10M_3=this.src_dir+"vid1_1v1_10M.webm";
+    this.training_video_path_5M_1=this.src_dir+"vid1_1_1_5M.webm";
+    this.training_video_path_5M_2=this.src_dir+"vid1_1_6_5M.webm";
+    this.training_video_path_5M_3=this.src_dir+"vid1_1_4_5M.webm";
+    this.training_video_path_10M_1=this.src_dir+"vid1_1_1_10M.webm";
+    this.training_video_path_10M_2=this.src_dir+"vid1_1_6_10M.webm";
+    this.training_video_path_10M_3=this.src_dir+"vid1_1_4_10M.webm";
    
 
     
   }
   StartTest_1() {
-    
     this.start_button_disable_1 = true;
     this.video_specs_path = "../assets/json/one_part/specs_G1.json";
     console.log(this.video_specs_path);
@@ -199,10 +202,10 @@ export class MainComponent implements OnInit {
     //console.log('file number:'+this.file_index);
     if (this.test_session==1){
       if (this.userchoice === ""){
-        this.hide_switch = false;
+        this.hide_switch = true;
         //this.alertService.error("Try again!");
       }else{
-        this.hide_switch = true;
+        this.hide_switch = false;
         this.save_result.recorded_result.push(new result());
         this.save_result.recorded_result[this.file_index].id = this.file_index;
         this.save_result.recorded_result[this.file_index].spec = this.orders[this.file_index];
@@ -214,9 +217,10 @@ export class MainComponent implements OnInit {
           this.hide_testing_session_1 = true;
           this.hide_training_session_2 = false;
           this.test_session = 2;
-          this.hide_switch = false;
+          this.hide_switch = true;
           //this.src_video_path="";
           this.file_index = 0;
+          this.count_display = 1;
           this.vidA.nativeElement.pause();
           this.vidA.nativeElement.removeAttribute('src'); // empty source
           this.vidA.nativeElement.load();
@@ -224,38 +228,20 @@ export class MainComponent implements OnInit {
 
         }else{
           this.file_index = this.file_index + 1;
-          this.userchoice = null;
+          this.count_display = this.file_index +1;
+          this.userchoice = "";
           this.src_video_path = this.src_dir + "vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_5M_"+this.orders[this.file_index][2]+".webm";
           console.log('current file index:'+this.file_index);
-          console.log(this.src_video_path);
-          //console.log(this.src_video_path);
-          // if (this.show_images == false){
-
-          //   (async () => { 
-          //     // Do something before delay
-          //     console.log('before delay');
-        
-          //     await this.delay(5000);
-        
-          //     // Do something after
-          //     console.log('after delay');
-        
-          //     this.vidA.nativeElement.play();
-          //     console.log('current file index:'+this.file_index);
-          //     console.log(this.src_video_path);
-        
-          //   })();
-          // }
-          
+          console.log(this.src_video_path);      
         }
       }
     }
     else if (this.test_session==2){
       if (this.userchoice === ""){
-        this.hide_switch = false;
+        this.hide_switch = true;
         //this.alertService.error("Try again!");
       }else{
-        this.hide_switch = true;
+        this.hide_switch = false;
         this.file_count = this.file_index+this.test_length;
         this.save_result.recorded_result.push(new result());
         this.save_result.recorded_result[this.file_count].id = this.file_index;
@@ -268,15 +254,12 @@ export class MainComponent implements OnInit {
           console.log(this.save_result);
           this.hide_testing_session_2= true;
           this.hide_save_session = false;
-          //this.file_index = 0;
 
         }else{
           this.file_index = this.file_index + 1;
-          this.userchoice = null;
+          this.count_display = this.file_index +1;
+          this.userchoice = "";
           this.src_video_path_2 = this.src_dir + "vid"+this.orders[this.file_index][0]+'_'+this.orders[this.file_index][1]+"_10M_"+this.orders[this.file_index][2]+".webm";
-          //console.log(this.src_video_path_2);
-          //console.log('current file index:'+this.file_index);
-          //console.log(this.src_video_path_2);
           if (this.show_images == false){
 
             (async () => { 
@@ -307,8 +290,14 @@ export class MainComponent implements OnInit {
        
 
   get dataUri(): SafeUrl {
-    let dateTime= new Date().toLocaleString();
-    this.save_result.finish_time = dateTime;
+    let dateTime= new Date();
+    let month = dateTime.getMonth()+1;
+    let date = dateTime.getDate();
+    let hour = dateTime.getHours();
+    let min = dateTime.getMinutes();
+    let sec = dateTime.getSeconds();
+    this.save_result.finish_time = dateTime.toString();
+    this.result_file_name="result_"+month+"_"+date+"_"+hour+"_"+min+"_"+sec+".json";
     const jsonData = JSON.stringify(this.save_result);
     const uri = 'data:application/json;charset=UTF-8,' + encodeURIComponent(jsonData);
     return this.sanitizer.bypassSecurityTrustUrl(uri);
